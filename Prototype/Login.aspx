@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="Prototype.Contact1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Prototype.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
-    Contact Us
+    Login
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Heading1" runat="server">
-    Contact Us
+    Login
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Heading2" runat="server">
 </asp:Content>

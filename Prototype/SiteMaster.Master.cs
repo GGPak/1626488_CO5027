@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Prototype
 {
-    public partial class about : System.Web.UI.Page
+    public partial class SiteMaster1 : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
