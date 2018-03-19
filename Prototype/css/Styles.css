@@ -2,12 +2,12 @@
 padding:0; margin:0;}
 
 body {
-	background-color:#CCCCFF;
+	background-color:#808080;
 }
 #page{
 	width:800px;
 	margin:auto;
-	background-color:#DDD;
+	background-color:#352e2e;
 	min-height:500px;
 }
 
