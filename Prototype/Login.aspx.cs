@@ -38,7 +38,24 @@ namespace Prototype
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
             var userIdentity = usermanager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
             authenticationManager.SignIn(new AuthenticationProperties() { }, userIdentity);
-        }
 
+            if (Request.QueryString["ReturnUrl"] != null)
+                {
+                    Response.Redirect(Request.QueryString["ReturnUrl"]);
+                }
+            else
+                {
+                   String userRoles = usermanager.GetRoles(user.Id).FirstOrDefault();
+
+            if (userRoles.Equals("Admin"))
+                {
+                    Response.Redirect("~/admin/index.aspx");
+                }
+            else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
+            }
+        }
     }
 }

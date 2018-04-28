@@ -7,8 +7,14 @@
     Welcome to admin panel
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
-    <p>
-        Default page for admin</p>
+    <form id="form1" runat="server">
+        <p>Default page for admin</p>
+        
+        <p>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add Product" />
+            <asp:Button ID="btnList" runat="server" OnClick="btnList_Click" Text="List of Products" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" /></p>
+    </form>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="GoogleMap" runat="server">
 </asp:Content>

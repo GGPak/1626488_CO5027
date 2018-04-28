@@ -6,12 +6,13 @@
     Login
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Heading2" runat="server">
+    Login
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
     
     <form id="form1" runat="server">
 
-    <asp:Label ID="lblLoginEmail" runat="server" Text="Email"></asp:Label>
+    <asp:Label ID="lblLoginEmail" runat="server" Text="Username"></asp:Label>
     
     <asp:TextBox ID="txtLoginEmail" runat="server"></asp:TextBox>
 

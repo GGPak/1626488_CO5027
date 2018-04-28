@@ -76,15 +76,6 @@ namespace Prototype {
         protected global::System.Web.UI.WebControls.Label lblSubject;
         
         /// <summary>
-        /// reqSubjectField control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqSubjectField;
-        
-        /// <summary>
         /// txtSubject control.
         /// </summary>
         /// <remarks>
@@ -92,6 +83,15 @@ namespace Prototype {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSubject;
+        
+        /// <summary>
+        /// reqSubjectField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqSubjectField;
         
         /// <summary>
         /// lblBody control.
