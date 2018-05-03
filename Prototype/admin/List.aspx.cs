@@ -18,5 +18,10 @@ namespace Prototype.admin
         {
             Response.Redirect("~/admin/index.aspx");
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

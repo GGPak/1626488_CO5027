@@ -11,10 +11,11 @@
 <link href="~/css/Styles.css" rel="stylesheet" type="text/css">
     <meta name ="viewport" content="initial-scale=1.0" />
     <meta charset="utf-8">
+
     <style>
         /*Always set the map height explicitly to define the size of the element that contains the map.*/
         #map {
-            height: 100px;
+            height: 500px;
         }
         /*Optional: Makes the sample page fill the window. */
         html, body {
@@ -23,6 +24,7 @@
             padding: 0;
         }
     </style>
+    
 </head>
 
 <body runat="server">
@@ -30,6 +32,7 @@
 <div id="header">
 <h1>
     <asp:ContentPlaceHolder ID="Heading1" runat="server">
+
     </asp:ContentPlaceHolder>
 </h1>
 
@@ -38,9 +41,9 @@
 <div id="menu">
 <ul>
 <li><a href="~/Default" runat="server">Home</a></li>
-<li><a href="~/Contact" runat="server">Contact Us</a></li>
 <li><a href="~/Login" runat="server">Login</a></li>
 <li><a href="~/Register" runat="server">Register</a></li>
+<li><a href="~/Contact" runat="server">Contact Us</a></li>
 
 
 </ul>
@@ -60,5 +63,11 @@
     <asp:ContentPlaceHolder ID="GoogleMap" runat="server">
 
     </asp:ContentPlaceHolder>
+
+    <div id="footer">
+        <a href="http://validator.w3.org/check?uri=referer">Validate HTML</a> |
+        <a href="http://jigsaw.w3.org/css-validator/check/referer">Validate CSS</a> |
+        <a href="~/admin/index" runat="server">Admin</a>
+    </div>
 </body>
 </html>

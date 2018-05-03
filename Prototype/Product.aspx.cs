@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using PayPal.Api;
 
 namespace Prototype
 {
@@ -21,6 +22,62 @@ namespace Prototype
             int quantityOfProduct = int.Parse(DDLQuantity.SelectedValue);
             decimal subTotal = (quantityOfProduct * productPrice);
             decimal total = subTotal + postagePackagingCost;
+
+            // Authenticate with PayPal
+            var config = ConfigManager.Instance.GetProperties();
+            var accessToken = new OAuthTokenCredential(config).GetAccessToken();
+            //Get APIContext Object
+            var apiContext = new APIContext(accessToken);
+
+            var productItem = new Item();
+            productItem.name = "Product 1";
+            productItem.currency = "BND";
+            productItem.price = productPrice.ToString();
+            productItem.sku = "PRO1"; //sku is stock keeping unit - e.g. manufacturer code
+            productItem.quantity = quantityOfProduct.ToString();
+
+            var transactionDetails = new Details();
+            transactionDetails.tax = "0";
+            transactionDetails.shipping = postagePackagingCost.ToString();
+            transactionDetails.subtotal = subTotal.ToString("0.00");
+
+            var transactionAmount = new Amount();
+            transactionAmount.currency = "BND";
+            transactionAmount.total = total.ToString("0.00");
+            transactionAmount.details = transactionDetails;
+
+            var transaction = new Transaction();
+            transaction.description = "Your order of Products";
+            transaction.invoice_number = Guid.NewGuid().ToString();//this should ideally be the id of a record storing the order
+            transaction.amount = transactionAmount;
+            transaction.item_list = new ItemList
+            {
+                items = new List<Item> { productItem }
+            };
+
+            var payer = new Payer();
+            payer.payment_method = "paypal";
+
+            var redirectUrls = new RedirectUrls();
+            redirectUrls.cancel_url = "http://" + HttpContext.Current.Request.Url.Authority + "/Default.aspx";
+            redirectUrls.return_url = "http://" + HttpContext.Current.Request.Url.Authority + "/CompletePurchase.aspx";
+
+            var payment = Payment.Create(apiContext, new Payment
+            {
+                intent = "sale",
+                payer = payer,
+                transactions = new List<Transaction> { transaction },
+                redirect_urls = redirectUrls
+            });
+
+            foreach (var link in payment.links)
+            {
+                if (link.rel.ToLower().Trim().Equals("approval_url"))
+                {
+                    //found the appropriate link, send the user there
+                    Response.Redirect(link.href);
+                }
+            }
         }
     }
 }

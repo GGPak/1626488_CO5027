@@ -3,7 +3,6 @@
     Logitech Homepage
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Heading1" runat="server">
-    Logitech Homepage
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Heading2" runat="server">
     Products
@@ -16,14 +15,19 @@
             <ItemTemplate>
                 <li>
                     <a href="<%#Eval("ProductID", "Product.aspx?Id={0}") %>">
-                        <%#Eval("ProductName")%>
                         <asp:Image ID="disp" runat="server" ImageUrl='<%# Eval("ProductImage") %>' />
+                        <p><%#Eval("ProductName")%></p>
+                        <br />
                     </a>
                 </li>
             </ItemTemplate>
 
             <FooterTemplate></ul></FooterTemplate>
         </asp:Repeater>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db_1626488_co5027_asgConnectionString2 %>" SelectCommand="SELECT * FROM [tblProducts]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db_1626488_co5027_asgConnectionString2 %>" SelectCommand="SELECT * FROM [tblProducts] WHERE ([Quantity] &lt; @Quantity)">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="0" Name="Quantity" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </form>
 </asp:Content>

@@ -3,7 +3,6 @@
     Login
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Heading1" runat="server">
-    Login
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Heading2" runat="server">
     Login
@@ -14,7 +13,7 @@
 
     <asp:Label ID="lblLoginEmail" runat="server" Text="Username"></asp:Label>
     
-    <asp:TextBox ID="txtLoginEmail" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtLoginEmail" runat="server" BorderColor="Black"></asp:TextBox>
 
     <p></p>
 

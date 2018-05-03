@@ -3,7 +3,7 @@
     Product
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Heading1" runat="server">
-    Product
+    &nbsp;
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Heading2" runat="server">
     Product Details
@@ -27,6 +27,9 @@
                 Price:
                 <asp:TextBox ID="PriceTextBox" runat="server" Text='<%# Bind("Price") %>' />
                 <br />
+                ProductImage:
+                <asp:TextBox ID="ProductImageTextBox" runat="server" Text='<%# Bind("ProductImage") %>' />
+                <br />
                 <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
                 &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
             </EditItemTemplate>
@@ -45,6 +48,9 @@
                 <br />
                 Price:
                 <asp:TextBox ID="PriceTextBox" runat="server" Text='<%# Bind("Price") %>' />
+                <br />
+                ProductImage:
+                <asp:TextBox ID="ProductImageTextBox" runat="server" Text='<%# Bind("ProductImage") %>' />
                 <br />
                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
                 &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
@@ -65,6 +71,10 @@
                 <br />
                 Price:
                 <asp:Label ID="PriceLabel" runat="server" Text='<%# Bind("Price") %>' />
+                <br />
+
+                ProductImage:
+                <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("ProductImage") %>' />
                 <br />
 
             </ItemTemplate>
