@@ -10,6 +10,19 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 
+    <p>If you have any feedback, don't be afraid to contact us!</p>
+
+    <br />
+
+    <p>Instagram: Logitech Speaker BN</p>
+    <p>Facebook: Logitech Speaker BN</p>
+    <p>Twitter: Logitech Speaker BN</p>
+    <p>Email: Fakhrul.1022@gmail.com</p>
+    <p>Telephone Number: +673 2226111</p>
+
+    <br />
+
+    <p>Enter the form below if there is any problem</p>
 
     <form id="form1" runat="server">
 
@@ -38,7 +51,7 @@
 
 <asp:RequiredFieldValidator ID="reqBodyField" runat="server" ErrorMessage="Please insert a comment." ControlToValidate="txtBody"></asp:RequiredFieldValidator>
         
-        <p<></p>
+        <p></p>
 
 <asp:Button ID="btnSendEmail" runat="server" Text="Send Email" OnClick="btnSendEmail_Click" />
 
@@ -53,9 +66,14 @@
         var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
+          center: { lat: 4.885731, lng: 114.931669 },
+          zoom: 17
+          });
+
+          var marker = new google.maps.Marker({
+              position: { lat: 4.885731, lng: 114.931669 },
+              map: map
+          })
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdBfUT3oC4smPeZauwv694dvrkz4dmjsQ&callback=initMap"

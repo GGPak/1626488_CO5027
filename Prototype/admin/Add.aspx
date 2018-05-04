@@ -10,7 +10,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 
     <form id="form1" runat="server">
-        <asp:FormView ID="FormView1" runat="server" DataKeyNames="ProductID" DataSourceID="SqlDataSource1" DefaultMode="Insert">
+        <asp:FormView ID="FormView1" runat="server" DataKeyNames="ProductID" DataSourceID="SqlDataSource1" DefaultMode="Insert" OnPageIndexChanging="FormView1_PageIndexChanging">
             <EditItemTemplate>
                 ProductName:
                 <asp:TextBox ID="ProductNameTextBox" runat="server" Text='<%# Bind("ProductName") %>' />

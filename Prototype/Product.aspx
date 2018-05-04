@@ -74,7 +74,7 @@
                 <br />
 
                 ProductImage:
-                <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("ProductImage") %>' />
+                <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("ProductImage") %>' alt="Product Image"/>
                 <br />
 
             </ItemTemplate>

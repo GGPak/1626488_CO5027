@@ -17,8 +17,13 @@ namespace Prototype
 
         protected void btnBuyNow_Click(object sender, EventArgs e)
         {
-            decimal postagePackagingCost = 3.95m;
-            decimal productPrice = 10.00m;
+            var ttPrice = FormView1.FindControl("PriceLabel") as Label;
+            var itemPrice = ttPrice.Text;
+            var findName = FormView1.FindControl("ProductNameLabel") as Label;
+            string itemName = findName.Text;
+
+            decimal postagePackagingCost = 5.00m;
+            decimal productPrice = decimal.Parse(itemPrice);
             int quantityOfProduct = int.Parse(DDLQuantity.SelectedValue);
             decimal subTotal = (quantityOfProduct * productPrice);
             decimal total = subTotal + postagePackagingCost;
@@ -30,8 +35,8 @@ namespace Prototype
             var apiContext = new APIContext(accessToken);
 
             var productItem = new Item();
-            productItem.name = "Product 1";
-            productItem.currency = "BND";
+            productItem.name = itemName;
+            productItem.currency = "USD";
             productItem.price = productPrice.ToString();
             productItem.sku = "PRO1"; //sku is stock keeping unit - e.g. manufacturer code
             productItem.quantity = quantityOfProduct.ToString();
@@ -42,7 +47,7 @@ namespace Prototype
             transactionDetails.subtotal = subTotal.ToString("0.00");
 
             var transactionAmount = new Amount();
-            transactionAmount.currency = "BND";
+            transactionAmount.currency = "USD";
             transactionAmount.total = total.ToString("0.00");
             transactionAmount.details = transactionDetails;
 
@@ -59,8 +64,8 @@ namespace Prototype
             payer.payment_method = "paypal";
 
             var redirectUrls = new RedirectUrls();
-            redirectUrls.cancel_url = "http://" + HttpContext.Current.Request.Url.Authority + "/Default.aspx";
-            redirectUrls.return_url = "http://" + HttpContext.Current.Request.Url.Authority + "/CompletePurchase.aspx";
+            redirectUrls.cancel_url = "http://" + HttpContext.Current.Request.Url.Authority + HttpContext.Current.Request.ApplicationPath + "/Default.aspx";
+            redirectUrls.return_url = "http://" + HttpContext.Current.Request.Url.Authority + HttpContext.Current.Request.ApplicationPath + "/CompletePurchase.aspx";
 
             var payment = Payment.Create(apiContext, new Payment
             {
@@ -69,6 +74,8 @@ namespace Prototype
                 transactions = new List<Transaction> { transaction },
                 redirect_urls = redirectUrls
             });
+
+            Session["paymentId"] = payment.id;
 
             foreach (var link in payment.links)
             {

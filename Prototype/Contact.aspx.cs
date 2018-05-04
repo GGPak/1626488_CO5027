@@ -21,7 +21,7 @@ namespace Prototype
 
                 //create mail client and message with to and from address, and set message subject and body
                 SmtpClient smtpClient = new SmtpClient();
-                MailMessage msg = new MailMessage("fakhrul.1022@gmail.com", "fakhrul.1022@gmail.com");
+                MailMessage msg = new MailMessage("fakhrul.10496@gmail.com", "fakhrul.10496@gmail.com");
                 msg.Subject = txtSubject.Text;
                 msg.Body = txtBody.Text;
 
@@ -31,7 +31,7 @@ namespace Prototype
                 smtpClient.EnableSsl = true;
 
                 //create credentials - e.g. username and password for the account
-                System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("fakhrul.1022@gmail.com", "fakhrulsahari");
+                System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("fakhrul.10496@gmail.com", "fakhrulsahari");
                 smtpClient.Credentials = credentials;
 
                 try
